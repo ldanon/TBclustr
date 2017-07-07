@@ -1,0 +1,3 @@
+useDynLib(TBclustr)
+exportPattern("^[[:alpha:]]+")
+importFrom(Rcpp, evalCpp)
