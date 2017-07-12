@@ -12,11 +12,17 @@ using namespace Rcpp;
 //
 
 // [[Rcpp::export]]
-NumericVector timesTwo(NumericVector x) {
-  return x * 2;
-  NumericVector lambda;
-  srand48((long)time(NULL));
-  lambda=rlnorm(0.1,0.2);
+NumericVector timesTwo(NumericVector x, NumericVector lnmean, NumericVector lnsd) {
+
+  double ln1=lnmean[0], ln2=lnsd[0];
+  double lambda;
+  lambda=R::rlnorm(-1,0.2); 
+  Rcout << lambda <<std::endl;
+  R::rpois(lambda);
+  
+    srand48((long)time(NULL));
+
+  return ln2;
 }
 
 
@@ -26,5 +32,5 @@ NumericVector timesTwo(NumericVector x) {
 //
 
 /*** R
-timesTwo(42)
+timesTwo(42,1,0.3)
 */

@@ -10,25 +10,25 @@ rc=read.csv("realclustersizes2015.csv")
 #WRAP THE SHARED OBJECT IN A R FUNCTION
 #COMPILE the C file on the command line
 #R CMD SHLIB poislognormclusters.c
-dyn.load("poislognormclusters.so")
+#dyn.load("poislognormclusters.so")
 
 
 #system.time(clusterdist(p,r,lambda,clustersizes))
 
 clusterdist_lognorm <- function(noclusters,lnmean, lnsd, overlap, clustersout) {
-		
 		rzero = exp(lnmean + 0.5*lnsd^2)
-           if (rzero>=1)
-           	{
-           			print(paste("logmean=",lnmean,"logsd=",lnsd,"R0=",rzero))
-                   stop("R0 is greater than 1")
-                  }
+      if (rzero>=1)
+      {
+          print(paste("logmean=",lnmean,"logsd=",lnsd,"R0=",rzero))
+          stop("R0 is greater than 1")
+      }
                   
-           clustersout=rep(0,noclusters)
-           out <- .C("clusterfunction",
-                   numc=as.integer(length(clustersout)), lnmean = as.double(lnmean), nlnsd=as.double(lnsd), oprob=as.double(overlap), clustersizes=as.double(clustersout))
-           return(out)
-		}
+      clustersout=rep(0,noclusters)
+#           out <- .C("rcpp_clusterfunction",
+#                   numc=as.integer(length(clustersout)), lnmean = as.double(lnmean), nlnsd=as.double(lnsd), oprob=as.double(overlap), clustersizes=as.double(clustersout))
+#           return(out)
+      rcpp_clusterfunction(length(clustersout),lnmean,lnsd,overlap,clustersout)
+}
 
 #test
 clusterdist_lognorm(10,-1,0.3,0.3)
@@ -80,8 +80,8 @@ modelstats = function(pars)
 	overlap=pars[3]
 	rzero = exp(mu + 0.5*sigma^2)
     
-    numberclusters=10968 #this is length(rc$x)
-   	maxclustersize=300 #max(rc$x=204)
+  numberclusters=10968 #this is length(rc$x)
+  maxclustersize=300 #max(rc$x=204)
    	mylseq=unique(floor(exp(seq(log(1),log(maxclustersize),length.out=50))))
    	myseq=seq(1,242,1)
 	counts=rep(0,length(mylseq))

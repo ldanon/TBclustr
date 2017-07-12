@@ -5,19 +5,24 @@
 
 using namespace Rcpp;
 
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP TBclustr_rcpp_hello_world() {
+// rcpp_clusterfunction
+NumericVector rcpp_clusterfunction(NumericVector numc, NumericVector lnmean, NumericVector lnsd, NumericVector oprob, NumericVector clustersizes);
+RcppExport SEXP TBclustr_rcpp_clusterfunction(SEXP numcSEXP, SEXP lnmeanSEXP, SEXP lnsdSEXP, SEXP oprobSEXP, SEXP clustersizesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
+    Rcpp::traits::input_parameter< NumericVector >::type numc(numcSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lnmean(lnmeanSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lnsd(lnsdSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type oprob(oprobSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type clustersizes(clustersizesSEXP);
+    rcpp_result_gen = Rcpp::wrap(rcpp_clusterfunction(numc, lnmean, lnsd, oprob, clustersizes));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"TBclustr_rcpp_hello_world", (DL_FUNC) &TBclustr_rcpp_hello_world, 0},
+    {"TBclustr_rcpp_clusterfunction", (DL_FUNC) &TBclustr_rcpp_clusterfunction, 5},
     {NULL, NULL, 0}
 };
 
