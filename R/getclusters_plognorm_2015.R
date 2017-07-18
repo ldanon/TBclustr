@@ -1,16 +1,8 @@
 setwd("~/GitHub/TBclustr")
 
-#rc=read.csv("realclustersizes1.csv")
-#rc0=read.csv("realclustersizes.csv")
-#rc2=read.csv("realclustersizes_straintypes.csv")
 rc=read.csv("realclustersizes2015.csv")
 
-#plot(as.numeric(table(rc$x)),log="xy")
 
-#WRAP THE SHARED OBJECT IN A R FUNCTION
-#COMPILE the C file on the command line
-#R CMD SHLIB poislognormclusters.c
-#dyn.load("poislognormclusters.so")
 
 
 #system.time(clusterdist(p,r,lambda,clustersizes))
