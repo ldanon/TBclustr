@@ -55,10 +55,11 @@ NumericVector rcpp_clusterfunction(NumericVector numc,
   return 1; 
 }
 
-/*** R
-clustersout=rep(0,10)
-system.time(replicate(1000000,rcpp_clusterfunction(10,-1,0.3,0.3,clustersout)))
-clustersout
-*/
+//testing
+// /*** R
+// clustersout=rep(0,10)
+// system.time(replicate(100000,rcpp_clusterfunction(10,-1,0.3,0.3,clustersout)))
+// clustersout
+// */
 
 

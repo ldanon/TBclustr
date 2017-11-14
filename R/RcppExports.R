@@ -2,6 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 rcpp_clusterfunction <- function(numc, lnmean, lnsd, oprob, clustersizes) {
-    .Call('TBclustr_rcpp_clusterfunction', PACKAGE = 'TBclustr', numc, lnmean, lnsd, oprob, clustersizes)
+    .Call('_TBclustr_rcpp_clusterfunction', PACKAGE = 'TBclustr', numc, lnmean, lnsd, oprob, clustersizes)
 }
 

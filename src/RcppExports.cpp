@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // rcpp_clusterfunction
 NumericVector rcpp_clusterfunction(NumericVector numc, NumericVector lnmean, NumericVector lnsd, NumericVector oprob, NumericVector clustersizes);
-RcppExport SEXP TBclustr_rcpp_clusterfunction(SEXP numcSEXP, SEXP lnmeanSEXP, SEXP lnsdSEXP, SEXP oprobSEXP, SEXP clustersizesSEXP) {
+RcppExport SEXP _TBclustr_rcpp_clusterfunction(SEXP numcSEXP, SEXP lnmeanSEXP, SEXP lnsdSEXP, SEXP oprobSEXP, SEXP clustersizesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -22,7 +22,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"TBclustr_rcpp_clusterfunction", (DL_FUNC) &TBclustr_rcpp_clusterfunction, 5},
+    {"_TBclustr_rcpp_clusterfunction", (DL_FUNC) &_TBclustr_rcpp_clusterfunction, 5},
     {NULL, NULL, 0}
 };
 
