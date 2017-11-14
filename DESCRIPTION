@@ -1,11 +1,11 @@
 Package: TBclustr
 Type: Package
 Title: What the Package Does in One 'Title Case' Line
-Version: 1.0
+Version: 0.2
 Date: 2017-06-28
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: One paragraph description of what the package does as one or more full sentences.
+Author: Leon Danon
+Maintainer: Leon Danon <l.danon@exeter.ac.uk>
+Description: Code to model the generation of clusters of infection, with application to TB clusters. Implementation of the model and fitting as described.
 License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.10)
 LinkingTo: Rcpp
