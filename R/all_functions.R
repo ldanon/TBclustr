@@ -1,4 +1,14 @@
-
+runTBclustr = function(filename){
+  rc=read.csv(filename)
+  
+  plotclusterdist(rc) # plot the histogram of clustersizes for your data
+  
+  ABC_output<-fitLogNormalmodel(rc)
+  
+  mod1<-bootstrapmodel(ABC_output,rc)
+  
+  examineposteriors(ABC_output)
+}
 
 
 
@@ -93,7 +103,7 @@ fitLogNormalmodel = function(rc){
   
   #now run for real with Marjoram MCMC algorithm (may take several hours on a slower machine)
   ABC_plognorm15<-ABC_mcmc(method="Marjoram", model=modelstats,progress_bar=T, 
-                           prior=priors, summary_stat_target=datacounts, prior_test=prior_test,n_rec=10000)
+                           prior=priors, summary_stat_target=datacounts, prior_test=prior_test,n_rec=100000)
   
   #ABC_plognorm15 = ABC_rej
   save(ABC_plognorm15,file="MCMCplognormfit.RData") # save output of ABC runs to file
